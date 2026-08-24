@@ -5,13 +5,13 @@
         - /url: /
         - paragraph: Главная
     - listitem:
-      - link "РПЛ":
-        - /url: /feeds/alfa_rpl/
-        - paragraph: РПЛ
-    - listitem:
       - link "Кино и сериалы":
         - /url: /feeds/movies-serials/
         - paragraph: Кино и сериалы
+    - listitem:
+      - link "Рупуб":
+        - /url: /feeds/zoomerzone/
+        - paragraph: Рупуб
     - listitem:
       - link "Детям":
         - /url: /feeds/kids/

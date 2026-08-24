@@ -1,0 +1,11 @@
+- dialog "RUTUBE":
+  - heading "RUTUBE" [level=3]
+  - button "Закрыть"
+  - paragraph: "/К оплате: \\d+₽/"
+  - paragraph: Смотрите без рекламы на всех устройствах и скачивайте видео на Android
+  - link "Узнать больше":
+    - /url: https://rutube.ru/info/marketplace/
+  - button /Оформить 1 месяц за \d+₽/
+  - button "Активировать промокод":
+    - img
+    - text: ""
