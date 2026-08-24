@@ -4,7 +4,9 @@ import { BasePage } from './BasePage'
 export class MainPage extends BasePage {
   private readonly headerLocator: Locator
   private readonly categoriesTabsLocator: Locator
-  private readonly sidebarMenuLocator: Locator
+  public readonly narrowSideBarMenuLocator: Locator
+  public readonly middleSideBarMenuLocator: Locator
+  public readonly wideSideBarMenuLocator: Locator
   private readonly headerAddBtnLocator: Locator
   private readonly headerNotificationBtnLocator: Locator
   private readonly headerSafeModeBtnLocator: Locator
@@ -34,12 +36,21 @@ export class MainPage extends BasePage {
     // Табы категорий
     this.categoriesTabsLocator = this.page.getByTestId('homepage-navigation')
     // Боковое меню
-    this.sidebarMenuLocator = this.page.getByLabel('Облегченная панель навигации')
+    this.narrowSideBarMenuLocator = this.page.getByLabel('Облегченная панель навигации')
+    this.middleSideBarMenuLocator = this.page.locator(
+      'nav.menu-content-module__content.menu-content-module__content--middle',
+    )
+    this.wideSideBarMenuLocator = this.page.locator(
+      'nav.menu-content-module__content.menu-content-module__content--wide',
+    )
   }
 
   // Actions
   async open() {
     await this.page.goto('https://rutube.ru/')
+  }
+  async clickBurgerMenu(value: 'Открыть меню навигации' | 'Закрыть меню навигации') {
+    await this.headerLocator.getByRole('button', { name: value }).click()
   }
   async openHeaderAddDropdownMenu() {
     await this.headerAddBtnLocator.click()
@@ -64,8 +75,14 @@ export class MainPage extends BasePage {
   async categoriesTabsHasCorrectAriaSnapshot() {
     await expect(this.categoriesTabsLocator).toMatchAriaSnapshot({ name: 'categoriesTabsAriaSnapshot.yml' })
   }
-  async sidebarMenuHasCorrectAriaSnapshot() {
-    await expect(this.sidebarMenuLocator).toMatchAriaSnapshot({ name: 'sidebarMenuAriaSnapshot.yml' })
+  async narrowSideBarMenuHasCorrectAriaSnapshot() {
+    await expect(this.narrowSideBarMenuLocator).toMatchAriaSnapshot({ name: 'narrowSideBarMenuAriaSnapshot.yml' })
+  }
+  async middleSideBarMenuHasCorrectAriaSnapshot() {
+    await expect(this.middleSideBarMenuLocator).toMatchAriaSnapshot({ name: 'middleSideBarMenuAriaSnapshot.yml' })
+  }
+  async wideSideBarMenuHasCorrectAriaSnapshot() {
+    await expect(this.wideSideBarMenuLocator).toMatchAriaSnapshot({ name: 'wideSideBarMenuAriaSnapshot.yml' })
   }
   async headerAddDropdownMenuContainerHasCorrectAriaSnapshot() {
     await expect(this.headerAddDropdownMenuLocator).toMatchAriaSnapshot({
