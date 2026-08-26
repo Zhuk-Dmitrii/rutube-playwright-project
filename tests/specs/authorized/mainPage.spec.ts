@@ -11,6 +11,11 @@ test.describe('Проверка доступности элементов гла
       await mainPage.openHeaderNotificationPopup()
       await mainPage.headerNotificationPopupHasCorrectAriaSnapshot()
     })
+
+    test('Проверка доступности меню профиля пользователя', async ({ mainPage }) => {
+      await mainPage.openUserProfileMenu()
+      await mainPage.headerUserProfileMenuHasCorrectAriaSnapshot()
+    })
   })
 
   test.describe('Проверки в области бокового меню', () => {

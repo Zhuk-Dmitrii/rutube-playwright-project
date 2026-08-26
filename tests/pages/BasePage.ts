@@ -1,4 +1,4 @@
-import { Locator, Page } from '@playwright/test'
+import { expect, Locator, Page } from '@playwright/test'
 
 export class BasePage {
   readonly page: Page
@@ -15,6 +15,11 @@ export class BasePage {
         await locator.click()
       }
     } catch {}
+  }
+
+  // Вспомогательный метод - проверяет snapshot
+  protected async checkAriaSnapshot(locator: Locator, fileName: string) {
+    await expect(locator).toMatchAriaSnapshot({ name: fileName })
   }
 
   async closeModalSubscribe() {

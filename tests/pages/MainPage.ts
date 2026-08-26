@@ -15,6 +15,8 @@ export class MainPage extends BasePage {
   private readonly headerAddDropdownMenuLocator: Locator
   private readonly headerNotificationPopupLocator: Locator
   private readonly headerDisabledAdsModalLocator: Locator
+  private readonly headerUserProfileBtnLocator: Locator
+  private readonly headerUserProfileMenuLocator: Locator
 
   constructor(page: Page) {
     super(page)
@@ -33,6 +35,8 @@ export class MainPage extends BasePage {
       .getByRole('dialog')
       .locator('.wdp-notifications-popup-module__wrapper')
     this.headerDisabledAdsModalLocator = this.page.getByRole('dialog', { name: 'RUTUBE' })
+    this.headerUserProfileBtnLocator = this.headerLocator.getByRole('button', { name: 'Открыть меню пользователя' })
+    this.headerUserProfileMenuLocator = this.page.getByRole('dialog', { name: 'Меню пользователя' })
     // Табы категорий
     this.categoriesTabsLocator = this.page.getByTestId('homepage-navigation')
     // Боковое меню
@@ -67,40 +71,40 @@ export class MainPage extends BasePage {
   async openLoginPage() {
     await this.headerLoginBtnLocator.click()
   }
+  async openUserProfileMenu() {
+    await this.headerUserProfileBtnLocator.click()
+  }
 
-  // Snapshots
+  // Assertions
+  // --- Assertions ==> Snapshots
   async headerHasCorrectAriaSnapshot() {
-    await expect(this.headerLocator).toMatchAriaSnapshot({ name: 'headerAriaSnapshot.yml' })
+    await this.checkAriaSnapshot(this.headerLocator, 'headerAriaSnapshot.yml')
   }
   async categoriesTabsHasCorrectAriaSnapshot() {
-    await expect(this.categoriesTabsLocator).toMatchAriaSnapshot({ name: 'categoriesTabsAriaSnapshot.yml' })
+    await this.checkAriaSnapshot(this.categoriesTabsLocator, 'categoriesTabsAriaSnapshot.yml')
   }
   async narrowSideBarMenuHasCorrectAriaSnapshot() {
-    await expect(this.narrowSideBarMenuLocator).toMatchAriaSnapshot({ name: 'narrowSideBarMenuAriaSnapshot.yml' })
+    await this.checkAriaSnapshot(this.narrowSideBarMenuLocator, 'narrowSideBarMenuAriaSnapshot.yml')
   }
   async middleSideBarMenuHasCorrectAriaSnapshot() {
-    await expect(this.middleSideBarMenuLocator).toMatchAriaSnapshot({ name: 'middleSideBarMenuAriaSnapshot.yml' })
+    await this.checkAriaSnapshot(this.middleSideBarMenuLocator, 'middleSideBarMenuAriaSnapshot.yml')
   }
   async wideSideBarMenuHasCorrectAriaSnapshot() {
-    await expect(this.wideSideBarMenuLocator).toMatchAriaSnapshot({ name: 'wideSideBarMenuAriaSnapshot.yml' })
+    await this.checkAriaSnapshot(this.wideSideBarMenuLocator, 'wideSideBarMenuAriaSnapshot.yml')
   }
   async headerAddDropdownMenuContainerHasCorrectAriaSnapshot() {
-    await expect(this.headerAddDropdownMenuLocator).toMatchAriaSnapshot({
-      name: 'headerAddDropdownMenuContainerAriaSnapshot.yml',
-    })
+    await this.checkAriaSnapshot(this.headerAddDropdownMenuLocator, 'headerAddDropdownMenuContainerAriaSnapshot.yml')
   }
   async headerNotificationPopupHasCorrectAriaSnapshot() {
-    await expect(this.headerNotificationPopupLocator).toMatchAriaSnapshot({
-      name: 'headerNotificationPopupAriaSnapshot.yml',
-    })
+    await this.checkAriaSnapshot(this.headerNotificationPopupLocator, 'headerNotificationPopupAriaSnapshot.yml')
   }
   async headerDisabledAdsModalHasCorrectAriaSnapshot() {
-    await expect(this.headerDisabledAdsModalLocator).toMatchAriaSnapshot({
-      name: 'headerDisabledAdsModalAriaSnapshot.yml',
-    })
+    await this.checkAriaSnapshot(this.headerDisabledAdsModalLocator, 'headerDisabledAdsModalAriaSnapshot.yml')
   }
-
-  // other checks
+  async headerUserProfileMenuHasCorrectAriaSnapshot() {
+    await this.checkAriaSnapshot(this.headerUserProfileMenuLocator, 'headerUserProfileMenuAriaSnapshot.yml')
+  }
+  // --- Assertions ==> Visibility
   async headerAddDropdownMenuHasCorrectItems() {
     await expect(
       this.headerAddDropdownMenuLocator.locator('button').filter({ hasText: 'Загрузить видео или Shorts' }),
