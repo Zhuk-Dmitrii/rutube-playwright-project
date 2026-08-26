@@ -1,0 +1,17 @@
+- banner:
+  - button "Открыть меню навигации":
+    - img
+  - button "RUTUBE":
+    - img "RUTUBE"
+  - textbox "Поиск"
+  - button "Отправить форму поиска"
+  - button "Добавить":
+    - img
+  - button "Уведомления":
+    - img
+  - button "перейти в безопасный режим":
+    - img
+  - button "Отключить рекламу"
+  - button "Открыть меню пользователя":
+    - img "Иконка канала Dmitry":
+      - img "Иконка канала Dmitry"

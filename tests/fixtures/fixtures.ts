@@ -9,6 +9,7 @@ export const test = base.extend<MyFixtures>({
   mainPage: async ({ page }, use) => {
     const mainPage = new MainPage(page)
     await mainPage.open()
+
     await mainPage.closeModalSubscribe()
     await mainPage.closeNotificationPopup()
     await mainPage.closeCookiesPopup()
@@ -16,4 +17,5 @@ export const test = base.extend<MyFixtures>({
     await use(mainPage)
   },
 })
+
 export { expect } from '@playwright/test'
