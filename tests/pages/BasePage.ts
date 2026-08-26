@@ -8,12 +8,10 @@ export class BasePage {
   }
 
   // Вспомогательный метод – кликает по локатору, только если он видим
-  private async clickIfVisible(locator: Locator, timeout = 1000) {
+  private async clickIfVisible(locator: Locator, timeout = 10000) {
     try {
-      const isVisible = await locator.isVisible({ timeout })
-      if (isVisible) {
-        await locator.click()
-      }
+      await locator.waitFor({ state: 'visible', timeout })
+      await locator.click()
     } catch {}
   }
 

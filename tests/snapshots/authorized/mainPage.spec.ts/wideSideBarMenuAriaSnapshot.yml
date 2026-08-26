@@ -91,7 +91,7 @@
     - list "Cкачать приложения":
       - listitem:
         - link "Google Play":
-          - /url: https://redirect.appmetrica.yandex.com/serve/822089280250761172?client_id=1787668002448865401&utm_source=rutube.ru&utm_medium=referral&utm_campaign=landing_app&user_id=80774980
+          - /url: /https:\/\/redirect\.appmetrica\.yandex\.com\/.*/
           - paragraph: Google Play
       - listitem:
         - link "Ярлык для iOS":
@@ -99,19 +99,19 @@
           - paragraph: Ярлык для iOS
       - listitem:
         - link "Huawei":
-          - /url: https://redirect.appmetrica.yandex.com/serve/389285442492612095?user_id=80774980&client_id=1787668002448865401&utm_source=rutube.ru&utm_medium=referral&utm_campaign=landing_app
+          - /url: /https:\/\/redirect\.appmetrica\.yandex\.com\/.*/
           - paragraph: Huawei
       - listitem:
         - link "RuStore":
-          - /url: https://redirect.appmetrica.yandex.com/serve/533400622968373086?user_id=80774980&client_id=1787668002448865401&utm_source=rutube.ru&utm_medium=referral&utm_campaign=landing_app
+          - /url: /https:\/\/redirect\.appmetrica\.yandex\.com\/.*/
           - paragraph: RuStore
       - listitem:
         - link "RuMarket":
-          - /url: https://redirect.appmetrica.yandex.com/serve/389285425212041727?user_id=80774980&client_id=1787668002448865401&utm_source=rutube.ru&utm_medium=referral&utm_campaign=landing_app
+          - /url: /https:\/\/redirect\.appmetrica\.yandex\.com\/.*/
           - paragraph: RuMarket
       - listitem:
         - link "Galaxy Store":
-          - /url: https://redirect.appmetrica.yandex.com/serve/605458194927465783?user_id=80774980&client_id=1787668002448865401&utm_source=rutube.ru&utm_medium=referral&utm_campaign=landing_app
+          - /url: /https:\/\/redirect\.appmetrica\.yandex\.com\/.*/
           - paragraph: Galaxy Store
   - paragraph: Больше от RUTUBE
   - list "Секция инструкции":
