@@ -20,8 +20,8 @@ export class BasePage {
     await expect(locator).toMatchAriaSnapshot({ name: fileName })
   }
   // Вспомогательный метод - проверяет screenshot
-  protected async checkScreenshot(locator: Locator, fileName: string) {
-    await expect(locator).toHaveScreenshot(fileName)
+  protected async checkScreenshot(locator: Locator, fileName: string, timeout?: number) {
+    await expect(locator).toHaveScreenshot(fileName, { timeout })
   }
   // Вспомогательный метод - скрывает DOM элемент
   protected async hideElement(selector: string) {
@@ -33,8 +33,8 @@ export class BasePage {
     }, selector)
   }
   // Вспомогательный метод - открывает страницу
-  async openPage(url: keyof typeof pagesUrl) {
-    await this.page.goto(pagesUrl[url])
+  async openPage(url: string) {
+    await this.page.goto(url)
   }
 
   // Вспомогательный метод - закрывает модальное окно подписки

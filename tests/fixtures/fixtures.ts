@@ -1,6 +1,7 @@
 import { CategoriesPage } from './../pages/CategoriesPage'
 import { test as base } from '@playwright/test'
 import { MainPage } from '../pages/MainPage'
+import { pagesUrl } from '../utils/pagesUrl'
 
 type MyFixtures = {
   mainPage: MainPage
@@ -10,7 +11,7 @@ type MyFixtures = {
 export const test = base.extend<MyFixtures>({
   mainPage: async ({ page }, use) => {
     const mainPage = new MainPage(page)
-    await mainPage.openPage('mainPage')
+    await mainPage.openPage(pagesUrl.mainPage)
 
     await mainPage.closeAllPopups()
 
@@ -18,7 +19,7 @@ export const test = base.extend<MyFixtures>({
   },
   categoriesPage: async ({ page }, use) => {
     const categoriesPage = new CategoriesPage(page)
-    await categoriesPage.openPage('categoriesPage')
+    await categoriesPage.openPage(pagesUrl.categoriesPage)
 
     await categoriesPage.closeAllPopups()
 
