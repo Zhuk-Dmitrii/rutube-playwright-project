@@ -10,7 +10,7 @@ type MyFixtures = {
 export const test = base.extend<MyFixtures>({
   mainPage: async ({ page }, use) => {
     const mainPage = new MainPage(page)
-    await mainPage.open()
+    await mainPage.openPage('mainPage')
 
     await mainPage.closeAllPopups()
 
@@ -18,7 +18,7 @@ export const test = base.extend<MyFixtures>({
   },
   categoriesPage: async ({ page }, use) => {
     const categoriesPage = new CategoriesPage(page)
-    await categoriesPage.open()
+    await categoriesPage.openPage('categoriesPage')
 
     await categoriesPage.closeAllPopups()
 

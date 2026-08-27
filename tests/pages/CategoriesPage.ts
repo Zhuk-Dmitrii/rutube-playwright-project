@@ -10,9 +10,6 @@ export class CategoriesPage extends BasePage {
     this.categoriesContentWrapper = this.page.locator('.categories-module__categories-page')
   }
 
-  async open() {
-    await this.page.goto('https://rutube.ru/categories/')
-  }
   async categoriesContentWrapperHasCorrectScreenshot() {
     await this.checkScreenshot(this.categoriesContentWrapper, 'categoriesContentWrapper.png')
   }

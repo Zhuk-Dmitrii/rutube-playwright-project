@@ -50,9 +50,6 @@ export class MainPage extends BasePage {
   }
 
   // Actions
-  async open() {
-    await this.page.goto('https://rutube.ru/')
-  }
   async clickBurgerMenu(value: 'Открыть меню навигации' | 'Закрыть меню навигации') {
     await this.headerLocator.getByRole('button', { name: value }).click()
   }

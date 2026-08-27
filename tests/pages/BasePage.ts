@@ -1,4 +1,5 @@
 import { expect, Locator, Page } from '@playwright/test'
+import { pagesUrl } from '../utils/pagesUrl'
 
 export class BasePage {
   readonly page: Page
@@ -14,7 +15,6 @@ export class BasePage {
       await locator.click()
     } catch {}
   }
-
   // Вспомогательный метод - проверяет snapshot
   protected async checkAriaSnapshot(locator: Locator, fileName: string) {
     await expect(locator).toMatchAriaSnapshot({ name: fileName })
@@ -32,6 +32,11 @@ export class BasePage {
       }
     }, selector)
   }
+  // Вспомогательный метод - открывает страницу
+  async openPage(url: keyof typeof pagesUrl) {
+    await this.page.goto(pagesUrl[url])
+  }
+
   // Вспомогательный метод - закрывает модальное окно подписки
   async closeModalSubscribe() {
     const closeBtn = this.page.getByRole('button', { name: 'Закрыть попап' })
