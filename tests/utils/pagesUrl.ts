@@ -10,4 +10,5 @@ export const pagesUrl = {
     academy: 'https://rutube.ru/for_creators/#academy',
     grades: 'https://rutube.ru/for_creators/#grades',
   },
+  subscriptionPage: 'https://rutube.ru/my/subscriptions/',
 }
