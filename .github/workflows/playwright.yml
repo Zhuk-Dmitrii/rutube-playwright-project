@@ -1,0 +1,35 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+jobs:
+  playwright:
+    name: 'Playwright Tests'
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.62.0-noble
+      options: --user 1001
+    env:
+      PROXY_IP: ${{ secrets.PROXY_IP }}
+      PROXY_LOGIN: ${{ secrets.PROXY_LOGIN }}
+      PROXY_PASSWORD: ${{ secrets.PROXY_PASSWORD }}
+      EMAIL: ${{ secrets.EMAIL }}
+      CI: true
+    steps:
+      - uses: actions/checkout@v6
+      - name: Restore auth storage state
+        run: |
+          mkdir -p tests/playwright/.auth
+          echo "${{ secrets.AUTH_STORAGE_STATE }}" | base64 -d > tests/playwright/.auth/user.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Playwright tests
+        run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

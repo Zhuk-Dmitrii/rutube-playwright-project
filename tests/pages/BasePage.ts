@@ -1,5 +1,4 @@
 import { expect, Locator, Page } from '@playwright/test'
-import { pagesUrl } from '../utils/pagesUrl'
 
 export class BasePage {
   readonly page: Page
