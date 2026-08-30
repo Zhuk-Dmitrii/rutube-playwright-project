@@ -30,18 +30,18 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    proxy: process.env.CI
-      ? {
-          server: process.env.PROXY_IP!,
-          username: process.env.PROXY_LOGIN!,
-          password: process.env.PROXY_PASSWORD!,
-        }
-      : undefined,
+    // proxy: process.env.CI
+    //   ? {
+    //       server: process.env.PROXY_IP!,
+    //       username: process.env.PROXY_LOGIN!,
+    //       password: process.env.PROXY_PASSWORD!,
+    //     }
+    //   : undefined,
   },
 
   /* Configure projects for major browsers */
   projects: [
-    { name: 'auth', testMatch: /.*\.setup\.ts/ },
+    // { name: 'auth', testMatch: /.*\.setup\.ts/ },
     {
       name: 'chromium authorized',
       use: { ...devices['Desktop Chrome'], storageState: 'tests/playwright/.auth/user.json' },
