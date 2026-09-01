@@ -12,9 +12,6 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.62.0-noble
       options: --user 1001
     env:
-      PROXY_IP: ${{ secrets.PROXY_IP }}
-      PROXY_LOGIN: ${{ secrets.PROXY_LOGIN }}
-      PROXY_PASSWORD: ${{ secrets.PROXY_PASSWORD }}
       EMAIL: ${{ secrets.EMAIL }}
       CI: true
     steps:
