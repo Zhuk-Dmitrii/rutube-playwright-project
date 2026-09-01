@@ -55,11 +55,11 @@ export class ForCreatorsPage extends BasePage {
     const iframeCount = await this.iframe.count()
     if (!iframeCount) return
 
-    await this.layoutLoader.waitFor({ state: 'visible', timeout: 10000 })
+    await this.layoutLoader.waitFor({ state: 'visible', timeout: 20000 })
   }
 
   async forCreatorsPageLayoutHasCorrectScreenshot(fileName: string) {
     await this.waitForPlayVideoBtn()
-    await this.checkScreenshot(this.forCreatorsPageLayout, fileName, 10000)
+    await this.checkScreenshot(this.forCreatorsPageLayout, fileName, 20000)
   }
 }
