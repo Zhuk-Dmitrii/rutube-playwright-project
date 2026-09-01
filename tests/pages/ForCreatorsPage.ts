@@ -41,21 +41,25 @@ export class ForCreatorsPage extends BasePage {
     },
   ]
   private readonly forCreatorsPageLayout: Locator
-  private readonly layoutLoader: Locator
   private readonly iframe: Locator
+  private readonly playVideoBtn: Locator
 
   constructor(page: Page) {
     super(page)
     this.forCreatorsPageLayout = this.page.locator('#___gatsby')
     this.iframe = this.page.locator('iframe[title="embed"]')
-    this.layoutLoader = this.page.frameLocator('iframe[title="embed"]').getByTestId('layout-loader')
+    this.playVideoBtn = this.page
+      .locator('iframe[title="embed"]')
+      .contentFrame()
+      .getByRole('button', { name: 'Воспроизвести видео (горячая клавиша K английская)' })
+      .nth(1)
   }
 
   private async waitForPlayVideoBtn() {
     const iframeCount = await this.iframe.count()
     if (!iframeCount) return
 
-    await this.layoutLoader.waitFor({ state: 'visible', timeout: 20000 })
+    await this.playVideoBtn.waitFor({ state: 'visible', timeout: 20000 })
   }
 
   async forCreatorsPageLayoutHasCorrectScreenshot(fileName: string) {
