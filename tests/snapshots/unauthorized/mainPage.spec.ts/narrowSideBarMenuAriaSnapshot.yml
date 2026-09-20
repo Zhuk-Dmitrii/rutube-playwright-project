@@ -9,9 +9,13 @@
         - /url: /feeds/movies-serials/
         - paragraph: Кино и сериалы
     - listitem:
-      - link "Рупуб":
-        - /url: /feeds/zoomerzone/
-        - paragraph: Рупуб
+      - link "Выходные смотрения":
+        - /url: /feeds/premierweekend/
+        - paragraph: Выходные смотрения
+    - listitem:
+      - link "Смотрябрь":
+        - /url: /feeds/smotryabr/
+        - paragraph: Смотрябрь
     - listitem:
       - link "Детям":
         - /url: /feeds/kids/
