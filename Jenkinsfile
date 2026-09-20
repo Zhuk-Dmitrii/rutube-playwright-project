@@ -25,14 +25,14 @@ pipeline {
 
         // Этап 2: Восстановление состояния аутентификации (аналог вашего шага Restore auth)
         stage('Restore Auth State') {
+            environment {
+                AUTH_STORAGE_STATE = credentials('AUTH_STORAGE_STATE')
+            }
             steps {
                 sh '''
                     mkdir -p tests/playwright/.auth
                     echo "$AUTH_STORAGE_STATE" | base64 -d > tests/playwright/.auth/user.json
                 '''
-            }
-            environment {
-                AUTH_STORAGE_STATE = credentials('AUTH_STORAGE_STATE')
             }
         }
 
