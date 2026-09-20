@@ -2,7 +2,7 @@ pipeline {
     // 1. Говорим Jenkins использовать официальный образ Playwright (как в вашем github-actions)
     agent {
         docker {
-            image 'mcr.microsoft.com/playwright:v1.62.0-noble'
+            image 'mcr.microsoft.com/playwright:v1.63.0-noble'
             // Флаг -u root нужен, чтобы у контейнера были права на запись артефактов
             args '-u root'
         }
@@ -28,10 +28,11 @@ pipeline {
             steps {
                 sh '''
                     mkdir -p tests/playwright/.auth
-                    # Если секрет AUTH_STORAGE_STATE есть в Jenkins, его нужно передать иначе.
-                    # Пока просто создаём пустой файл, чтобы тесты не упали из-за отсутствия папки
-                    echo "{}" > tests/playwright/.auth/user.json
+                    echo "$AUTH_STORAGE_STATE" | base64 -d > tests/playwright/.auth/user.json
                 '''
+            }
+            environment {
+                AUTH_STORAGE_STATE = credentials('AUTH_STORAGE_STATE')
             }
         }
 
